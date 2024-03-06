@@ -4,16 +4,26 @@
  */
 package br.edu.ifsul.cc.lpoo.pecuaria.modelo;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Collection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 /**
  *
  * @author 20222PF.CC0019
  */
+
 public class Bovino {
     
+    
     private Integer id;
+    
     private Calendar data_inicio;
     private Calendar data_fim;
     private Float peso_chegada;

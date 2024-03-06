@@ -20,6 +20,67 @@ public class Venda {
     
     private Funcionario funcionario;
     private Cliente cliente;
-    private Collection<Bovino> bovino;
+    private Collection<Bovino> bovinos;
+
+    public Venda() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Float getValor() {
+        return valor;
+    }
+
+    public void setValor(Float valor) {
+        this.valor = valor;
+    }
+
+    public Calendar getData() {
+        return data;
+    }
+
+    public void setData(Calendar data) {
+        this.data = data;
+    }
+
+    public String getObservacoes() {
+        return observacoes;
+    }
+
+    public void setObservacoes(String observacoes) {
+        this.observacoes = observacoes;
+    }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Collection<Bovino> getBovinos() {
+        return bovinos;
+    }
+
+    public void setBovinos(Collection<Bovino> bovinos) {
+        this.bovinos = bovinos;
+    }
+    
+    
     
 }
