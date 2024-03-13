@@ -5,15 +5,30 @@
 package br.edu.ifsul.cc.lpoo.pecuaria.modelo;
 
 import java.util.Calendar;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author 20222PF.CC0019
  */
+@Entity
+@Table(name = "tb_cliente")
+@DiscriminatorValue("C")
 public class Cliente extends Pessoa {
     
+    @Column(nullable = false, length = 14)
     private String cnpj;
+    
+    @Column(nullable = false)
+    @Temporal(TemporalType.DATE)
     private Calendar data_ultima_compra;
+    
+    @Column(nullable = true, precision = 2)
     private Float valor_compras;
 
     public Cliente() {

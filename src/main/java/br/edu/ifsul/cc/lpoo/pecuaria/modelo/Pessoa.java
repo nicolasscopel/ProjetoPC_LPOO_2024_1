@@ -4,22 +4,55 @@
  */
 package br.edu.ifsul.cc.lpoo.pecuaria.modelo;
 
+import java.io.Serializable;
 import java.util.Calendar;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author 20222PF.CC0019
  */
-public abstract class Pessoa {
+@Entity
+@Table(name = "tb_pessoa")
+@Inheritance(strategy = InheritanceType.JOINED)//alterar a estratégia.
+@DiscriminatorColumn(name = "tipo")
+public abstract class Pessoa implements Serializable{
     
+    @Id
+    @Column(length = 11)
     private String cpf;
-    private String rf;
+    
+    @Column(nullable = false, length = 50) // FALSE = OBRIGATORIO
+    private String rg;
+    
+    @Column(nullable = false, length = 6)
     private String senha;
+    
+    @Column(nullable = false, length = 200)
     private String nome;
+    
+    @Column(nullable = false)
+    @Temporal(TemporalType.DATE)
     private Calendar data_nascimento;
+    
+    @Column(nullable = true, length = 8)
     private String cep;
+    
+    @Column(nullable = true, length = 50)
     private String numero;
+    
+    @Column(nullable = true, length = 200)
     private String complemento;
+    
+    @Column(nullable = false)
     private Boolean status; 
 
     public Pessoa() {
@@ -34,12 +67,12 @@ public abstract class Pessoa {
         this.cpf = cpf;
     }
 
-    public String getRf() {
-        return rf;
+    public String getRg() {
+        return rg;
     }
 
-    public void setRf(String rf) {
-        this.rf = rf;
+    public void setRg(String rg) {
+        this.rg= rg;
     }
 
     public String getSenha() {

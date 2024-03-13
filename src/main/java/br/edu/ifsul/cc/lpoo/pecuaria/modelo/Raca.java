@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -21,6 +23,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_raca")
+@NamedQueries({@NamedQuery(name="Raca.orderbyid", query="select r from Raca r order by r.id asc")})
 public class Raca implements Serializable {
     
     

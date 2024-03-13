@@ -4,7 +4,9 @@
  */
 package br.edu.ifsul.cc.lpoo.pecuaria.modelo.dao;
 
+import br.edu.ifsul.cc.lpoo.pecuaria.modelo.Raca;
 import java.sql.Connection;
+import java.util.Collection;
 
 /**
  *
@@ -47,6 +49,11 @@ public class PersistenciaJDBC implements InterfacePersistencia {
 
     @Override
     public void remover(Object o) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    @Override
+    public Collection<Raca> listRacas() throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); 
     }
     

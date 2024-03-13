@@ -7,35 +7,71 @@ package br.edu.ifsul.cc.lpoo.pecuaria.modelo;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Collection;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author 20222PF.CC0019
  */
 
-public class Bovino {
+@Entity
+@Table(name = "tb_bovino")
+public class Bovino implements Serializable{
     
-    
+    @Id
+    @Column(length = 11)
     private Integer id;
     
+    @Column(nullable = false)
+    @Temporal(TemporalType.DATE)
     private Calendar data_inicio;
+    
+    @Column(nullable = true)
+    @Temporal(TemporalType.DATE)
     private Calendar data_fim;
+    
+    @Column(nullable = false, precision = 2)
     private Float peso_chegada;
+    
+    @Column(nullable = true, precision = 2)
     private Float pesoa_atual;
+    
+    @Column(nullable = false, precision = 2)
     private Float valor_kg_compra;
+    
+    @Column(nullable = true, precision = 2)
     private Float valor_kg_venda;
+    
+    @Column(nullable = false, precision = 2)
     private Float custo_diario;
+    
+    @Column(nullable = true, precision = 2)
     private Float valor_liquido;
     
-    private Collection<Pesagem> pesagens;
-    private Situacao situacao;
-    private Raca raca;
+    
+    @OneToMany(mappedBy = "bovino") //DEVE APONTAR PARA A REFERENCIA DE BOVINO DETRO DE PESAGENS
+    private Collection<Pesagem> pesagens; // AGREGAÇÃO POR COMPOSIÇÃO
+    
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Situacao situacao; // ASSOCIAÇÃO
+    
+    @ManyToOne
+    @JoinColumn(name = "raca_id", nullable = false)
+    private Raca raca; // ASSOCIAÇÃO
 
     public Bovino() {
     }
